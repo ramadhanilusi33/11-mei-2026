@@ -1,0 +1,229 @@
+import express from 'express';
+
+const app = express();
+
+// membaca folder public
+app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+
+    res.send(`
+    <!DOCTYPE html>
+    <html lang="id">
+
+    <head>
+
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Portfolio Lusi Ramadhani</title>
+
+        <link rel="stylesheet" href="/style.css">
+
+    </head>
+
+    <body>
+
+    <!-- BACKGROUND -->
+    <div class="bg"></div>
+
+    <!-- NAVBAR -->
+    <nav>
+
+        <h2 class="logo">Lusi</h2>
+
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+        </ul>
+
+    </nav>
+
+    <!-- HERO -->
+    <header>
+
+        <div class="hero-text">
+
+            <p class="hello">Hello, Saya</p>
+
+            <h1>Lusi Ramadhani</h1>
+
+            <h2>Mahasiswi Teknik Elektronika Industri</h2>
+
+            <p class="desc">
+                Saya adalah mahasiswi aktif Program Studi D4 Teknik 
+                Elektronika Industri di Politeknik Negeri Padang yang 
+                memiliki minat besar pada bidang elektronika, 
+                mikrokontroler, Internet of Things (IoT), 
+                dan sistem otomasi.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#about" class="btn">
+                    Tentang Saya
+                </a>
+
+                <a href="#skills" class="btn2">
+                    Lihat Skill
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- FOTO -->
+        <div class="hero-image">
+
+            <div class="circle">
+
+                <img 
+                src="https://i.imgur.com/8Km9tLL.jpg" 
+                alt="Foto Lusi">
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about" class="card">
+
+        <h2>Tentang Saya</h2>
+
+        <p>
+            Selain aktif dalam kegiatan perkuliahan, saya juga 
+            mengikuti berbagai kegiatan organisasi, pengembangan diri, 
+            serta kompetisi di bidang teknologi untuk meningkatkan 
+            kemampuan dan pengalaman saya.
+        </p>
+
+        <br>
+
+        <p>
+            Saya memiliki ketertarikan pada pengembangan sistem berbasis 
+            Arduino, ESP32, sensor, dan penerapan teknologi dalam 
+            kehidupan sehari-hari.
+        </p>
+
+    </section>
+
+    <!-- DATA DIRI -->
+    <section class="card">
+
+        <h2>Data Diri</h2>
+
+        <div class="info">
+
+            <p><span>Nama:</span> Lusi Ramadhani</p>
+
+            <p><span>Status:</span> Mahasiswi Teknik Elektronika Industri</p>
+
+            <p><span>Kampus:</span> Politeknik Negeri Padang</p>
+
+            <p><span>Minat:</span> Elektronika, IoT, dan Otomasi</p>
+
+        </div>
+
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="card">
+
+        <h2>Keahlian</h2>
+
+        <div class="skills">
+
+            <div class="skill">Arduino</div>
+
+            <div class="skill">ESP32</div>
+
+            <div class="skill">Internet of Things</div>
+
+            <div class="skill">Elektronika Dasar</div>
+
+            <div class="skill">Mikrokontroler</div>
+
+            <div class="skill">Sistem Otomasi</div>
+
+            <div class="skill">HTML & CSS</div>
+
+            <div class="skill">Pemrograman Dasar</div>
+
+        </div>
+
+    </section>
+
+    <!-- PENGALAMAN -->
+    <section class="card">
+
+        <h2>Pengalaman</h2>
+
+        <p>
+            Memiliki pengalaman dalam pengembangan project berbasis 
+            Arduino dan sensor, simulasi portable coffee maker 
+            menggunakan Arduino, serta mengikuti kegiatan organisasi 
+            dan kompetisi teknologi.
+        </p>
+
+    </section>
+
+    <!-- MOTTO -->
+    <section class="card">
+
+        <h2>Motto</h2>
+
+        <p>
+            "Terus belajar, berkembang, dan menciptakan inovasi melalui teknologi."
+        </p>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 Lusi Ramadhani | Portfolio Website
+    </footer>
+
+    </body>
+    </html>
+    `);
+});
+
+// API ABOUT
+app.get('/about', (req, res) => {
+
+    res.json({
+
+        status: 'ok',
+
+        message: 'Tentang Saya',
+
+        data: {
+
+            nama: 'Lusi Ramadhani',
+
+            program_studi: 'D4 Teknik Elektronika Industri',
+
+            kampus: 'Politeknik Negeri Padang',
+
+            minat: 'Elektronika, IoT, dan Otomasi',
+
+            keahlian: [
+                'Arduino',
+                'ESP32',
+                'Internet of Things',
+                'Elektronika Dasar',
+                'Mikrokontroler',
+                'Sistem Otomasi'
+            ]
+        }
+    });
+});
+
+// SERVER
+app.listen(5000, () => {
+    console.log('Aplikasi jalan di http://localhost:5000');
+});
